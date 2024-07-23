@@ -1,6 +1,8 @@
 # javascript
 Tutorial self-teaching JavaScript from YouTube and online tutorials
 
+Update Jul 23, 2024:  Relearn and review reading JavaScript The Definitive Guide By David Flanagan
+
 YouTube programmingknowledge https://www.youtube.com/playlist?list=PLS1QulWo1RIZ4erAYe3k8zWA5jAu72mVa
 
 YouTube Quentin Watt https://www.youtube.com/playlist?list=PL41lfR-6DnOrwYi5d824q9-Y6z3JdSgQa
