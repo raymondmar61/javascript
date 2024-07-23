@@ -1,3 +1,5 @@
+/* JavaScript The Definitive Guide By David Flanagan Chapter 01 Introduction To JavaScript */
+
 console.log("Hello World!  filename hello.js") //print Hello World!  filename hello.js
 let declarevariablex;
 declarevariablex = "value is 0";
