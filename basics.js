@@ -398,3 +398,153 @@ for (let eachletter of wordsvariable) {
 for (let eachwordsvariable in wordsvariable){
     console.log(eachwordsvariable) //print from 0 to 11 in its own line
 }
+
+let falseinteger = "seveneightyfour";
+try {
+    console.log(sum(55+falseinteger))
+}
+catch {
+    console.log("The variable is not a number")  //print The variable is not a number
+}
+finally {
+    console.log("The end of the day mistakes are learned.  finally is printed no matter what.")  //print The end of the day mistakes are learned.  finally is printed no matter what.
+}
+
+/* JavaScript The Definitive Guide By David Flanagan Chapter 06 Objects */
+/*
+An object literal is a comma-separated list of colonseparated name:value pairs, enclosed within curly braces.
+A property name is a Java‐Script identifier or a string literal (the empty string is allowed).
+A property value is any JavaScript expression; the value of the expression (it may be a primitive value or an object value) becomes the value of the property.
+*/
+let objectwithnoproperties = {};
+let twonumericproperties = {x:0, y:1};
+console.log("y" in twonumericproperties) //print true.  The property variable must be in quotes.
+console.log(1 in twonumericproperties) //print false
+console.log("toString" in twonumericproperties) //print true.  twonumericproperties inherits a toString property.  RM:  Numericals are converted to strings in properties?!?
+console.log(twonumericproperties.hasOwnProperty("x")) //print true.  twonumericproperties has own property x.
+console.log(twonumericproperties.propertyIsEnumerable("x")) //print true.  twonumericproperties has own enumerable property x.
+console.log(twonumericproperties.x !== undefined) //print true.  twonumericproperties has property x.
+let bookpropertynames = {"main title":"JavaScript","sub title":"The Definitive Guide","audience":"programmers","starrating":2.0, author:{firstname:"David", lastname:"Flanagan"}};
+let secondjavascriptobject = Date.prototype;
+console.log(secondjavascriptobject) //print {toString: ƒ, toDateString: ƒ, toTimeString: ƒ, toISOString: ƒ, toUTCString: ƒ, …} . . .  RM:  lists all object from the Date object or Date module
+let createnewobject1 = Object.create({x:1, y:2});
+console.log(createnewobject1.x+createnewobject1.y) //print 3
+let createnullobject = Object.create(null);
+//let nomodification = {inheritedobject:"don't change the value"};
+//library.function(Object.create(nomodification)); //Can't modify can't change
+let getauthorproperty = bookpropertynames.author;
+let getnameproperty = bookpropertynames.author.lastname;
+let gettitleproperty = bookpropertynames["main title"];
+console.log(getauthorproperty) //print {firstname: 'David', lastname: 'Flanagan'}
+console.log(getnameproperty) //print Flanagan
+console.log(gettitleproperty) //print JavaScript
+let combinetwoproperties = {...twonumericproperties, ...bookpropertynames};
+console.log(combinetwoproperties) //print {x: 0, y: 1, main title: 'JavaScript', sub title: 'The Definitive Guide', audience: 'programmers', …}
+console.log(combinetwoproperties.x, combinetwoproperties["sub title"]) //print 0 'The Definitive Guide'
+let spreadpriority1 = {x:1};
+let spreadpriority2 = {x:0, ...spreadpriority1};
+console.log(spreadpriority2) //print {x: 1}
+let spreadpriority3 = {...spreadpriority1, x:0};
+console.log(spreadpriority3) //print {x: 0}
+console.log(bookpropertynames) //print {main title: 'JavaScript', sub title: 'The Definitive Guide', audience: 'programmers', starrating: 2, author: {…}, …}
+delete bookpropertynames.starrating
+bookpropertynames.addpropertyedition = 7;
+console.log(bookpropertynames) //print {main title: 'JavaScript', sub title: 'The Definitive Guide', audience: 'programmers', author: {…}, addpropertyedition: 7}
+//The delete operator only deletes own properties, not inherited ones. (To delete an inherited property, you must delete it from the prototype object in which it is defined. Doing this affects every object that inherits from that prototype.)
+let gotopropertyx = 10, gotopropertyy = 20;
+hereisproperty = {gotopropertyx, gotopropertyy};
+console.log(hereisproperty) //print gotopropertyx: 1, gotopropertyy: 2}
+console.log(hereisproperty.gotopropertyx+hereisproperty.gotopropertyy) //print 30
+let ihavepropertyxyz = {xyz: "ihavepropertyxyz has own property xyz and inherits property toString"};
+console.log(ihavepropertyxyz) //print {xyz: 'ihavepropertyxyz has own property xyz and inherits property toString'}
+delete xyz
+console.log(ihavepropertyxyz) //print {xyz: 'ihavepropertyxyz has own property xyz and inherits property toString'}
+delete ihavepropertyxyz.xyz
+console.log(ihavepropertyxyz) //print {}
+var declareglobal = "variable";
+console.log(declareglobal) //print variable
+delete globalThis.declareglobal
+console.log(declareglobal) //print variable
+globalThis.canchangeproperty = "configurable global property with no let and no var";
+console.log(canchangeproperty) //print configurable global property with no let and no var
+delete canchangeproperty
+try {
+    console.log(canchangeproperty) //return error message
+}
+catch{
+    console.log("canchangeproperty deleted") //print canchangeproperty deleted
+}
+let functioninsideproperty = {x:1, y:2, toString: function () {return `(${this.x},${this.y})`;}, toLocaleString: function () {return `(${this.x.toLocaleString()},${this.y.toLocaleString()})`;}};
+console.log(String(functioninsideproperty)) //print (1,2).  toString() is used for string conversions.
+console.log(functioninsideproperty) //print {x: 1, y: 2, toString: ƒ, toLocaleString: ƒ}
+console.log(functioninsideproperty.toString()) //print (1,2)
+console.log(functioninsideproperty.toLocaleString()) //print (1,2).  RM:  notice the letter e at the end of locale.
+let functioninsideproperty2 = {x:4, y:5, valueOf: function() {return this.x+this.y;}}
+console.log(functioninsideproperty2) //print {x: 4, y: 5, valueOf: ƒ}
+console.log(functioninsideproperty2.x) //print 4
+console.log(functioninsideproperty2.valueOf()) //print 9
+let functioninsidepropertyiscalledmethod = {areaofsquare:  function() {return this.side*this.side;}, side:10}
+console.log(functioninsidepropertyiscalledmethod) //print {side: 10, areaofsquare: ƒ}
+console.log(functioninsidepropertyiscalledmethod.areaofsquare()) //print 100
+const declareconstantfirst = "";
+const symbolidontunderstand = Symbol();
+let importvaluetoproperty = {"function is a method inside property"(importxvariable) {return importxvariable+1;}, [declareconstantfirst](importxvariable) {return importxvariable*2;}, [symbolidontunderstand](importxvariable){return importxvariable*100;}};
+console.log(importvaluetoproperty["function is a method inside property"](1)) //print 2
+console.log(importvaluetoproperty[declareconstantfirst](5)) //print 10
+console.log(importvaluetoproperty[symbolidontunderstand](10)) //print 1000
+let propertygettersetter = {xreadandwrite:1,yreadandwrite:2, get rgetter() {return (this.xreadandwrite*5, this.yreadandwrite*10);}, set rgetter(newvalue){let oldvalue = (this.xreadandwrite*5, this.yreadandwrite*10); let addition = newvalue+oldvalue;}};
+console.log(propertygettersetter) //print {xreadandwrite: 1, yreadandwrite: 2}
+console.log(propertygettersetter.rgetter) //print 20.  RM: prints the latest value or last value in rgetter like spreadpriority2 property
+console.log(propertygettersetter.rgetter.addition) //print undefined
+console.log(propertygettersetter.rgetter.xreadandwrite) //print undefined
+console.log(propertygettersetter.rgetter.newvalue) //print undefined
+let objectinheritspropertygettersetter = Object.create(propertygettersetter); //inheritance before inheritance section below
+objectinheritspropertygettersetter.xreadandwrite = 333;
+objectinheritspropertygettersetter.yreadandwrite = 444;
+console.log(objectinheritspropertygettersetter) //print {x: 333, y: 444}
+console.log(objectinheritspropertygettersetter.rgetter) //print 4440
+let newoperatorcreatesinitializesnewobjects = new Object();
+let newoperatorcreatesinitializesnewarray = new Array();
+let newoperatorcreatesinitializesnewdate = new Date();
+let newoperatorcreatesinitializesnewmap = new Map();
+
+//Inheritance
+console.log(Object.prototype) //print {__defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, __lookupSetter__: ƒ, …} . . .
+let inheritobjectmethodsfromobjectprototype = {};
+inheritobjectmethodsfromobjectprototype.addpropertyx = 1;
+inheritobjectmethodsfromobjectprototype.addpropertyy = 2;
+console.log(inheritobjectmethodsfromobjectprototype) //print {addpropertyx: 1, addpropertyy: 2}
+let inheritfrominheritobjectmethodsfromobjectprototypeandobjectprototype = Object.create(inheritobjectmethodsfromobjectprototype);
+console.log(inheritfrominheritobjectmethodsfromobjectprototypeandobjectprototype) //print {}.  RM:  correct, doesn't print inheritobjectmethodsfromobjectprototype's addpropertyx and addpropertyy
+inheritfrominheritobjectmethodsfromobjectprototypeandobjectprototype.addpropertyz = 3;
+console.log(inheritfrominheritobjectmethodsfromobjectprototypeandobjectprototype) //print {addpropertyz: 3}
+let q = Object.create(inheritfrominheritobjectmethodsfromobjectprototypeandobjectprototype);
+console.log(q) //print {}
+q.anothernumber = 44;
+console.log(q) //print {anothernumber: 44}
+console.log(q.inheritobjectmethodsfromobjectprototype) //print undefined.  RM:  how do you print all properties?
+console.log(q.addpropertyx) //print 1
+console.log(inheritobjectmethodsfromobjectprototype.addpropertyx) //print 1
+console.log(q.anothernumber + q.addpropertyx) //print 45  44+1 from inheritobjectmethodsfromobjectprototype.addpropertyx equals 45.
+let rookisalwaysone = {rook:1};
+console.log(rookisalwaysone) //print {rook: 1}
+let cookieinheritsrook = Object.create(rookisalwaysone);
+cookieinheritsrook.addnumberx = 100;
+cookieinheritsrook.addnumbery = 222;
+cookieinheritsrook.rook = 8888;
+console.log(cookieinheritsrook) //print {addnumberx: 100, addnumbery: 222, rook: 8888}
+console.log(cookieinheritsrook.rook) //print 8888
+console.log(rookisalwaysone.rook) //print 1
+
+//Enumerating properties enumerate properties
+let o3enumerableproperties = {x:1, y:2, z:3};
+console.log(o3enumerableproperties) //print {x: 1, y: 2, z: 3}
+console.log(o3enumerableproperties.propertyIsEnumerable("toString")) //print false.  Built-in methods that objects inherit are not enumerable, but the properties that your code adds to objects are enumerable by default.
+for(let eacho3enumerableproperties in o3enumerableproperties) {
+    console.log(eacho3enumerableproperties.toString() +" from for loop")
+    /*
+    x from for loop
+    y from for loop
+    z from for loop
+    */
+}
