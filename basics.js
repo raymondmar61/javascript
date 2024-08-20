@@ -548,3 +548,119 @@ for(let eacho3enumerableproperties in o3enumerableproperties) {
     z from for loop
     */
 }
+
+/* JavaScript The Definitive Guide By David Flanagan Chapter 07 Arrays */
+/* An array is an ordered collection of values.  Each value is called an element.  Each element has a numeric position called an index.  An array may have different elements of different types.  Subarrays or an array inside another array is valid.  Indexing numbering starts at zero.  Maximum array is 4,294,967,295 elements. RM:  It's like a Python list.*/
+
+let emptyarray = [];
+let primenumbersarray = [2, 3, 5, 7, 11];
+let miscarray = [1.1, true, "a", ];
+let basenumber = 1024;
+let tableaddbasenumber = [basenumber, basenumber+1, basenumber+2, basenumber+3];
+let dictionaryinsidemultiplearray = [[1,{x:1, y:2}], [2,{x:3,y:4}]];
+console.log(dictionaryinsidemultiplearray) //print 0 : Array(2) 0 : 1 1 : {x: 1, y: 2}\n 1 : Array(2) 0 : 2 1 : {x: 3, y: 4}
+let countemptyindex = [1,,3];
+console.log(countemptyindex) //print [1, empty, 3]
+let undefsnoelements = [,,];
+let ainersspreadoperator = [1,2,3];
+let boutersspreadoperator = [0, ...ainersspreadoperator, 4]; //The three dots spread the array ainersspreadoperator for its elements become elements within the array literal being created
+console.log(ainersspreadoperator.length) //print 3.  Count number of elements.
+console.log(boutersspreadoperator) //print [0, 1, 2, 3, 4]
+let originalspread = [1,2,3];
+let copyspread = [...originalspread];
+console.log(originalspread) //print [1,2,3]
+console.log(copyspread) //print [1,2,3]
+console.log(originalspread[0]) //print 1
+console.log(copyspread[0]) //print 1
+copyspread[0] = 99
+console.log(copyspread[0]) //print 99.
+console.log(originalspread[0]) //print 1.  Modify the copy does not change the original.
+let digitsstringsiterable = [..."0123456789ABCDEF"];
+console.log(digitsstringsiterable)  //print ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+let lettersiterable = [..."hello world"]
+console.log(lettersiterable) //print ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+let aarrayempty = new Array();
+console.log(aarrayempty) //print []
+let aarrayemptytenelements = new Array(10);
+console.log(aarrayemptytenelements) //print [empty × 10]
+/* Use Array.of() for numeric elements to avoid confusion when numbers inside Array() define the number of elements such as let aarrayemptytenelements = new Array(10); */
+console.log(Array.of(10)) //print [10]
+console.log(Array.of(1,2,3)) //print [1, 2, 3]
+let copyarray = Array.from(originalspread);
+console.log(copyarray) //print [1, 2, 3]
+let aindexing = ["world"];
+console.log(aindexing[0]) //print world
+let valuereadindexzero = aindexing[0];
+console.log(valuereadindexzero) //print world
+console.log(aindexing.length) //print 1.  One element "world".
+/* A sparse array is the elements don't have contiguous indexes starting at zero.  The value of the length property is greater than the number of elements. */
+let asparsearray = new Array(5);
+console.log(asparsearray.length) //print 5
+asparsearray[1000] = "Insert string array at index position 1000.  Increase length to 1001 from 0 to 1000 total count 1001";
+console.log(asparsearray[999]) //print undefined
+console.log(asparsearray[1000]) //print Insert string array at index position 1000.  Increase length to 1001 from 0 to 1000 total count 1001
+console.log(asparsearray.length) //print 1001.  RM:  remember index numbering starts at 0
+/* Use .length to delete elements and increase the array length */
+let auselengthchangenumberelements = [1,2,3,4,5];
+console.log(auselengthchangenumberelements) //print [1, 2, 3, 4, 5]
+console.log(auselengthchangenumberelements.length) //print 5
+auselengthchangenumberelements.length = 3;  //Change number of elements from 5 to 3
+console.log(auselengthchangenumberelements) //print [1, 2, 3]
+auselengthchangenumberelements.length = 0;  //Change number of elements from 3 to 0.  Delete all elements.
+console.log(auselengthchangenumberelements) //print []
+let aadddeleteelements = [];
+aadddeleteelements[0] = "zero string";
+aadddeleteelements[1] = "one string";
+aadddeleteelements.push("add string at the end of the array")
+console.log(aadddeleteelements) //print ['zero string', 'one string', 'add string at the end of the array']
+aadddeleteelements.push("add string second to the end of the array","ADD STRING ABSOLUTE END OF THE ARRAY")
+console.log(aadddeleteelements) //print ['zero string', 'one string', 'add string at the end of the array', 'add string second to the end of the array', 'ADD STRING ABSOLUTE END OF THE ARRAY']
+delete aadddeleteelements[2] //Delete element value at index 2.  Not delete index 2.  Index 2 becomes empty.
+console.log(aadddeleteelements) //print [['zero string', 'one string', empty, 'add string second to the end of the array', 'ADD STRING ABSOLUTE END OF THE ARRAY']
+let lettersforloop = [..."Hello world"];
+for (let eachlettersforloop of lettersforloop) { //RM:  it's for of.  Not for in.
+    console.log(eachlettersforloop) //print Hello world each letter in its own line
+}
+for (let [index, value] of lettersforloop.entries()) {
+    console.log(index, value) //print index number and the value of index number:  0 'H'\n 1 'e'\n 2 'l'\n 3 'l'\n . . .
+}
+let uppercaseforeach = "";
+lettersforloop.forEach(lettersforloop => {
+    uppercaseforeach += lettersforloop.toUpperCase();
+});
+console.log(uppercaseforeach) //print HELLO WORLD
+let vowlesextractforloop = "";
+for (let n = 0; n < lettersforloop.length; n++) { //RM:  semicolons separate the for loop condition
+    if (/[aeiou]/.test(lettersforloop[n])) { //regular expression which was not taught yet
+    vowlesextractforloop += lettersforloop[n];
+    }
+}
+console.log(vowlesextractforloop) //print eoo
+/* Array methods */
+/*forEach() method iterates through an array invoking a function you specified for each element.  The function is the first argument.  forEach() then invokes your function with three arguments: the value of the array element, the index of the array element, and the array itself. If you only care about the value of the array element, you can write a function with only one parameter for which the additional arguments will be ignored */
+let datanumbers = [1,2,3,4,5], sum = 0;
+datanumbers.forEach(valuefunctionname=>{sum += valuefunctionname;})
+console.log(sum) //print 15
+/* The map() method passes each element of the array on which it is invoked to the function you specify and returns an array containing the values returned by your function. */
+let amap = [1,2,3];
+console.log(amap.map(x=>x*x)) //print [1, 4, 9]
+//console.log(x) //print ReferenceError error message
+let datanumbersmap = [1,2,3,4,5], summap = 0;
+datanumbersmap.map(valuefunctionname=>{summap += valuefunctionname;})
+console.log(summap) //print 15
+let afilterreturnstrue = [1,2,3,4,5];
+console.log(afilterreturnstrue.filter(lessthan3=>lessthan3<3)) //print [1, 2].  Return all numbers less than 3.
+console.log(afilterreturnstrue.filter((allnumbers,eachnumber)=>eachnumber%2===0)) //print [1, 3, 5].  Remove all even numbers.  Filter all even numbers.  The double equal sign is deprecated.  Use strict equality operator === triple equals.  RM:  it should return even numbers.  Filter to return all even numbers.
+let afindfindindex = [1,2,3,4,5];
+console.log(afindfindindex.findIndex(returnindexnumber=>returnindexnumber===3)) //print 2
+console.log(afindfindindex.findIndex(returnindexnumbers=>returnindexnumbers<3)) //print 0
+console.log(afindfindindex.find(returnnumbersdivisibleby2=>returnnumbersdivisibleby2%2===0)) //print 2
+console.log(afindfindindex.find(returnnumberslessthan3=>returnnumberslessthan3<3)) //print 1
+console.log(afindfindindex.every(areallnumberslessthan10=>areallnumberslessthan10<10)) //print true
+console.log(afindfindindex.every(areallnumberseven=>areallnumberseven%2===0)) //print false
+console.log(afindfindindex.some(aresomenumberslessthan10=>aresomenumberslessthan10<10)) //print true
+console.log(afindfindindex.some(aresomenumberseven=>aresomenumberseven%2===0)) //print true
+console.log(afindfindindex.reduce((initialvalue0,initialarrayvalue)=>initialvalue0+initialarrayvalue,0)) //print 15.  The .reduce takes 0 and adds the initialarrayvalue 1  0+1=1.  1 becomes the initialvalue0.  The next initialarrayvalue is 2.  1+2=3.  3 becomes the initialvalue0.  The next initialarrayvalue is 3.  3+3=6.  6 becomes the initialvalue0.  The next initialarrayvalue is 4.  6+4=10.  10 becomes the initialvalue0.  The next initialarrayvalue is 5.  10+5=15.  15 becomes the initialvalue0 and the final.
+console.log(afindfindindex.reduce((initialvalue1,initialarrayvalue)=>initialvalue1*initialarrayvalue,1)) //print 120.  The .reduce takes initialvalue1 1 and adds the initialarrayvalue 1  1*1=1.  1 becomes the initialvalue1.  The next initialarrayvalue is 2.  1*2=2.  2 becomes the initialvalue1.  The next initialarrayvalue is 3.  3*2=6.  6 becomes the initialvalue1.  The next initialarrayvalue is 4.  6*4=24.  24 becomes the initialvalue1.  The next initialarrayvalue is 5.  24*5=120.  120 becomes the initialvalue1 and the final.
+let afindfindindexno1 = [3,4,5,6,7];
+console.log(afindfindindexno1.reduce((noinitialvalue,initialarrayvalue)=>noinitialvalue*initialarrayvalue)) //print 2520.  No initial value at the second argument.  The .reduce uses the first value in afindfindindexno1 3.  initialarrayvalue 3  3*4=12.  12 becomes the noinitialvalue.  The next initialarrayvalue is 5.  12*5=60.  60 becomes the noinitialvalue.  The next initialarrayvalue is 6.  60*6=360.  360 becomes the noinitialvalue.  The next initialarrayvalue is 7.  360*7=2520.  2520 becomes the noinitialvalue and the final.
