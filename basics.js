@@ -664,3 +664,130 @@ console.log(afindfindindex.reduce((initialvalue0,initialarrayvalue)=>initialvalu
 console.log(afindfindindex.reduce((initialvalue1,initialarrayvalue)=>initialvalue1*initialarrayvalue,1)) //print 120.  The .reduce takes initialvalue1 1 and adds the initialarrayvalue 1  1*1=1.  1 becomes the initialvalue1.  The next initialarrayvalue is 2.  1*2=2.  2 becomes the initialvalue1.  The next initialarrayvalue is 3.  3*2=6.  6 becomes the initialvalue1.  The next initialarrayvalue is 4.  6*4=24.  24 becomes the initialvalue1.  The next initialarrayvalue is 5.  24*5=120.  120 becomes the initialvalue1 and the final.
 let afindfindindexno1 = [3,4,5,6,7];
 console.log(afindfindindexno1.reduce((noinitialvalue,initialarrayvalue)=>noinitialvalue*initialarrayvalue)) //print 2520.  No initial value at the second argument.  The .reduce uses the first value in afindfindindexno1 3.  initialarrayvalue 3  3*4=12.  12 becomes the noinitialvalue.  The next initialarrayvalue is 5.  12*5=60.  60 becomes the noinitialvalue.  The next initialarrayvalue is 6.  60*6=360.  360 becomes the noinitialvalue.  The next initialarrayvalue is 7.  360*7=2520.  2520 becomes the noinitialvalue and the final.
+console.log(["flat method",["returns a new array",["to one level of nesting"]]]) //print 0 : "flat method" 1 : Array(2) 0 : "returns a new array" 1 : Array(1) 0 : "to one level of nesting" length : 1
+let aspecifyhowmanyflat = [1,[2,[3,[4]]]];
+console.log(aspecifyhowmanyflat.flat(1)) //print [1, 2, Array(2)]
+console.log(aspecifyhowmanyflat.flat(2)) //print yy.js:120 (4) [1, 2, 3, Array(1)]
+console.log(aspecifyhowmanyflat.flat(3)) //print yy.js:121 (4) [1, 2, 3, 4]
+console.log(aspecifyhowmanyflat.flat(4)) //print yy.js:122 (4) [1, 2, 3, 4]
+let initialconcatarray = ["first","initial","array","to combine"];
+console.log(initialconcatarray) //print ['first', 'initial', 'array', 'to combine']
+console.log(initialconcatarray.concat("second initial", "array")) //print ['first', 'initial', 'array', 'to combine', 'second initial', 'array']
+console.log(initialconcatarray.concat(["third","array"],["fourth","array"])) //print ['first', 'initial', 'array', 'to combine', 'third', 'array', 'fourth', 'array']
+console.log(initialconcatarray.concat("fifth",["sixth",["seventh"]])) //print ['first', 'initial', 'array', 'to combine', 'fifth', 'sixth', Array(1)]
+console.log(initialconcatarray) //print ['first', 'initial', 'array', 'to combine']
+let appendarrayattheend = ["initial value"];
+appendarrayattheend.push("push method","add one or more elements","at the end of the array","pop deletes last element")
+console.log(appendarrayattheend) //print ['initial value', 'push method', 'add one or more elements', 'at the end of the array', 'pop deletes last element']
+appendarrayattheend.pop();
+console.log(appendarrayattheend) //print ['initial value', 'push method', 'add one or more elements', 'at the end of the array']
+savelastelementdeleted = appendarrayattheend.pop()
+console.log(savelastelementdeleted) //print at the end of the array.  The last element furthest right assigned variable deleted.
+let appendarrayatthebegin = ["initial value"];
+appendarrayatthebegin.unshift("unshift method","add one or more elements","at the beginning of the array","shift deletes first element")
+console.log(appendarrayatthebegin) //print ['unshift method', 'add one or more elements', 'at the beginning of the array', 'shift deletes first element', 'initial value']
+appendarrayatthebegin.shift();
+console.log(appendarrayatthebegin) //print ['add one or more elements', 'at the beginning of the array', 'shift deletes first element', 'initial value']
+savefirstelementdeleted = appendarrayatthebegin.shift()
+console.log(savefirstelementdeleted) //print add one or more elements.  The first element furthest left assigned variable deleted.
+//Extract, replace, fill, copy slicing
+let aslice = [1,2,3,4,5];
+console.log(aslice) //print [1, 2, 3, 4, 5]
+console.log(aslice.slice(0,3)) //print [1, 2, 3].  The returned array contains the element specified by the first argument and excluding up to the element specified by the second argument.
+console.log(aslice.length)  //print 5
+console.log(aslice.slice(3)) //print [4, 5].  If only one argument is specified, the returned array contains all elements from the start position to the end of the array.
+console.log(aslice.slice(1,-1)) //print [2, 3, 4].  If either argument is negative, it specifies an array element relative to the length of the array. An argument of –1, for example, specifies the last element in the array, and an argument of –2 specifies the element before that one.
+console.log(aslice.slice(-3,-2)) //print [3]
+console.log(aslice.slice(-3,-1)) //print [3, 4]
+console.log(aslice.slice(-3,-1,-1)) //print [3, 4]
+console.log(aslice.slice(-3,1)) //print []
+console.log(aslice.slice(1,-3)) //print []
+//splice() method inserts or removes.  Permanently modifes the array.  Elements of the array that come after the insertion or deletion point have their indexes increased or decreased as necessary so that they remain contiguous with the rest of the array. The first argument to splice() specifies the array position at which the insertion and/or deletion is to begin. The second argument specifies the number of elements that should be deleted from (spliced out of) the array.  If this second argument is omitted, all array elements from the start element to the end of the array are removed.
+let asplice1 = [1,2,3,4,5,6,7,8];
+console.log(asplice1) //print [1, 2, 3, 4, 5, 6, 7, 8]
+asplice1.splice(4)
+console.log(asplice1) //print [1, 2, 3, 4]
+let asplice2 = [1,2,3,4,5,6,7,8];
+console.log(asplice2) //print [1, 2, 3, 4, 5, 6, 7, 8]
+asplice2.splice(1,2)
+console.log(asplice2) //print [1, 4, 5, 6, 7, 8]
+let asplice3 = [1,2,3,4,5,6,7,8];
+console.log(asplice3) //print [1, 2, 3, 4, 5, 6, 7, 8]
+asplice3.splice(1,1)
+console.log(asplice3) //print [1, 3, 4, 5, 6, 7, 8]
+let asplice4 = [1,2,3,4,5,6,7,8];
+console.log(asplice4) //print [1, 2, 3, 4, 5, 6, 7, 8]
+asplice4.splice(3,4)
+console.log(asplice4) //print [1, 2, 3, 8]
+//The first two arguments to splice() specify which array elements are to be deleted. These arguments may be followed by any number of additional arguments that specify elements to be inserted into the array, starting at the position specified by the first argument.
+let asplicereplaceelements1 = [1,2,3,4,5];
+console.log(asplicereplaceelements1) //print [1, 2, 3, 4, 5]
+asplicereplaceelements1.splice(2,0,"replace with two strings starting at index 2","and only index 2 with the ,0,")
+console.log(asplicereplaceelements1) //print [1, 2, 'replace with two strings starting at index 2', 'and only index 2 with the ,0,', 3, 4, 5]
+let asplicereplaceelements2 = [1,2,3,4,5,6];
+console.log(asplicereplaceelements2) //print [1, 2, 3, 4, 5, 6]
+asplicereplaceelements2.splice(1,3,"replace with three strings starting at index 1","two replaced","three replaced")
+console.log(asplicereplaceelements2) //print [1, 'replace with three strings starting at index 1', 'two replaced', 'three replaced', 5, 6]
+let fillmethodsetselements = new Array(5);
+console.log(fillmethodsetselements.fill(0)) //print [0, 0, 0, 0, 0]
+console.log(fillmethodsetselements.fill(99,1)) //print [0, 99, 99, 99, 99]
+console.log(fillmethodsetselements.fill(888,2,-1)) //print [0, 99, 888, 888, 99].  The first argument to fill() is the value to set array elements to. The optional second argument specifies the starting index. If omitted, filling starts at index 0. The optional third argument specifies the ending index—array elements up to, but not including, this index will be filled.
+/*
+copyWithin() copies a slice of an array to a new position within the array. It modifies the array in place and returns the modified array, but it will not change the length of the array. The first argument specifies the destination index to which the first element will be copied. The second argument specifies the index of the first element to be copied. If this second argument is omitted, 0 is used. The third argument specifies the end of the slice of elements to be copied. If omitted, the length of the array is used. Elements from the start index up to, but not including, the end index will be copied. You can specify indexes relative to the end of the array by passing negative numbers,
+*/
+let copyslicewithin = [1,2,3,4,5,6,7,8];
+console.log(copyslicewithin.copyWithin(1)) //print [1, 1, 2, 3, 4, 5, 6, 7]
+console.log(copyslicewithin.copyWithin(2,3,5)) //print [1, 1, 3, 4, 4, 5, 6, 7]
+console.log(copyslicewithin.copyWithin(0, -2)) //print [6, 7, 3, 4, 4, 5, 6, 7]
+let indexposition = [0,1,2,1,0];
+console.log(indexposition.indexOf(1)) //print 1.  The first 1 is at index position 1.
+console.log(indexposition.lastIndexOf(1)) //print 3.  The last 1 from the right side is at index position 3.
+console.log(indexposition.indexOf(2)) //print 2.  The 2 is at index position 3.
+console.log(indexposition.indexOf(1,3)) //print 3.  Start searching for the number 1 and index position 3.
+console.log(indexposition.lastIndexOf(1,-3)) //print 1.  Start searching for 1 starting from the right side three index numbers from the right to the left.
+console.log(indexposition.includes(2)) //print true.  Check for value in array.  Check for element in array.  Find value.  Find element.
+let sortelements = ["sort values","or sort elements","in an array","sorted array"]
+console.log(sortelements.sort()) //print ['in an array', 'or sort elements', 'sort values', 'sorted array']
+console.log(sortelements.reverse()) //print ['sorted array', 'sort values', 'or sort elements', 'in an array']
+let converttostring = [1,2,3];
+console.log(converttostring.join()) //print 1,2,3
+//same as
+console.log(converttostring.toString()) //print 1,2,3
+console.log(typeof(converttostring.join())) //print string
+console.log(converttostring.join("*separate with a space*")) //print 1*separate with a space*2*separate with a space*3
+console.log(converttostring.join("*noseparate*")) //print 1*noseparate*2*noseparate*3
+let tenblankelements = new Array(10)
+console.log(tenblankelements.length) //print 10
+console.log(tenblankelements.join("-")) //print ---------.  9 hyphens confirmed.  RM:  makes sense.  The converttostring variable joins the length minus 1 with number of separators.
+let checkarray = ["check is array","confirm array","array is true"];
+console.log(Array.isArray(checkarray)) //print true
+
+/* JavaScript The Definitive Guide By David Flanagan Chapter 08 Functions */
+/* Definition:  A function is a block of JavaScript code that is defined once but may be executed, or invoked, any number of times. JavaScript functions are parameterized: a function definition may include a list of identifiers, known as parameters, that work as local variables for the body of the function. Function invocations provide values, or arguments, for the function’s parameters. Functions often use their argument values to compute a return value that becomes the value of the function-invocation expression. In addition to the arguments, each invocation has another value—the invocation context— that is the value of the this keyword. */
+/* Function declarations consists of the function keyword, an identifier naming the function which is a variable, a pair of parentheses around a comma separated list of zero or more identifiers or parameters, and a pair of curly braces with zero or more statements which is the body of the function. */
+function functionname(identifierone, identifiertwo, identifierthree) {
+    console.log("statements")
+}
+let invokefunction = functionname("apple","bananna","grape"); //return statements
+const functionexpression = function(x) {return console.log("Another type of function.  Function expression.",x)};
+console.log(functionexpression(9876)) //print Another type of function.  Function expression. 9876\n undefined
+let invokethefunctionexpression = functionexpression(777777);
+console.log(invokethefunctionexpression) //print Another type of function.  Function expression. 777777\n undefined
+let anotherfunctionexpression = (function(x) {return x*x;}(10));
+console.log(anotherfunctionexpression) //print 100
+const arrowfunction = (x,y) => {return x+y};
+let callsamefunctionstwice = arrowfunction(100,200) + arrowfunction(1111,2222);
+console.log(callsamefunctionstwice) //print 3633.  300+3333.
+const sumarrowfunction = (x,y) => x+y;
+let callsamefunctionstwice2 = sumarrowfunction(100,200) + sumarrowfunction(1111,2222);
+console.log(callsamefunctionstwice2) //print 3633.  300+3333.
+const noargumentsarrowfunction = () => 42;
+console.log(noargumentsarrowfunction) //print () => 42
+const fstring = x => {return {value: x};};
+const gstring = x => ({value: x});
+console.log(gstring({x:-43})) //print {value: {…}} . . . -43
+const statementarrowfunction = () => {return console.log("Arrow functions uses arrow => to separate function parameters from the function body.  No function keyword.")};
+function nestedfunction(a,b) {
+    function square(x) {return x*x;}
+    return a+b;
+}
