@@ -791,3 +791,118 @@ function nestedfunction(a,b) {
     function square(x) {return x*x;}
     return a+b;
 }
+let invokefunctionvariable = nestedfunction({x:25,y:50});
+console.log(invokethefunctionexpression) //printed undefined
+//Method invocation.  A method is a JavaScript function stored in a property of an object.  Define a method of the object object.method=function.  Invoke it by object.method().  If method() expects two arguments, then invoke it by object.method(argument1,argument2);
+let calculatorobject = {
+    operand1:1,
+    operand2:2,
+    addmethod(){
+        this.result = this.operand1+this.operand2;
+    }
+};
+calculatorobject.addmethod();
+console.log(calculatorobject.result) //print 3
+let assignvariabletoprint = calculatorobject["addmethod"](111,222);
+console.log(assignvariabletoprint) //print undefined
+console.log(calculatorobject["addmethod"](111,222)) //print undefined
+let oobject = {
+    methodofoobject: function() {
+        let selfvariable = this;
+        this === 0
+        fhelperfunction();
+        function fhelperfunction() { //nested function fhelperfunction
+            this === 0 //false because this is a global variable or undefined
+            selfvariable === 0; //true because selfvariable is the outer this variable
+        }
+    }
+};
+oobject.methodofoobject(); //invoke the methodmethodofobject on the object oobject
+console.log(oobject.methodofoobject()) //print undefined
+function argumentsparameters(o, a){
+    return o+a;
+}
+let o = {x:1}, p = {y:2, z:3};
+let a = argumentsparameters(o);
+console.log(a) //print [object Object]undefined
+console.log(argumentsparameters(p,a)) //print [object Object][object Object]undefined
+function squarenumbers(x) {
+    return x*x;
+}
+console.log(squarenumbers(7)) //print 49
+let squarevariable = squarenumbers
+console.log(squarevariable(7)) //print 49
+let objectproperty = {createmethodsquare: function(x) {return x*x;}};
+let functionmethod = objectproperty.createmethodsquare(49);
+console.log(functionmethod) //print 2401
+let arrayliteral = [x=>x*x, 20];
+console.log(arrayliteral[0]) //print x=x*x
+console.log(arrayliteral[1]) //print 20
+console.log(arrayliteral[0](arrayliteral[1])) //print 400
+function simplefunctionadd(x,y) {return x+y;}
+console.log(simplefunctionadd(1,5)) //print 6
+function operate(operation, operand11, operand22) {
+    return operation(operand11, operand22);
+}
+// let invokefunction2 = operate(add2, operate(add2,2,3), operate(multiply,4,5)); //print Uncaught ReferenceError: add2 is not defined
+const operators = {
+    add2:(x,y)=>x+y,
+    subtract:(x,y)=>x-y,
+    multiply:(x,y)=>x*y,
+    divide:(x,y)=>x/y
+};
+function operate2(operation, operand11, operand22){
+    return operators[operation](operand11, operand22);
+}
+console.log(operate2("add2", 10,2)) //print 12
+let variablescope = "global variable";
+function checkscope(){
+    let variablescope = "local variable";
+    function fvalue() {return variablescope;}
+    return fvalue;
+}
+console.log(checkscope()) //print ƒ fvalue() {return variablescope;}
+checkscope()
+let uniqueinteger = (function() {
+    let counter = 0;
+    return function() {return counter++;};    
+}());
+console.log(uniqueinteger()) //print 0
+console.log(uniqueinteger()) //print 1
+console.log(uniqueinteger()) //print 2
+console.log(uniqueinteger()) //print 3
+//like Python Classes
+function counter() {
+    let n = 0;
+    return {
+        count: function() {return n++;},
+        reset: function() {n=0;}
+    };
+}
+let ccounter1 = counter(), dcounter2 = counter();
+console.log(ccounter1.count()) //print 0
+console.log(dcounter2.count()) //print 0
+console.log(ccounter1.count()) //print 1
+console.log(dcounter2.count()) //print 1
+console.log(ccounter1.count()) //print 2
+ccounter1.reset();
+console.log(ccounter1.count()) //print 0
+console.log(dcounter2.count()) //print 2
+function counterwithinput(n) {
+    return {
+        get count() {return n++;},
+        set count(m) {
+            if (m>n)n=m;
+            else throw Error("Count can only be set to a larger value");
+        }
+    };
+}
+let cvariable = counterwithinput(1000);
+console.log(cvariable.count) //print 1000
+console.log(cvariable.count) //print 1001
+console.log(cvariable.count) //print 1002
+console.log(cvariable.count) //print 1003
+cvariable.count = 2000;
+console.log(cvariable.count) //print 2000
+console.log(cvariable.count) //print 2001
+// cvariable.count = 2000; //return  Error: Count can only be set to a larger value
