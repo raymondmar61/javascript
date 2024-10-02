@@ -380,3 +380,116 @@ let foreachfunctionsumnumbers = function (numberslist, useoptionalindex) {
 
 };
 console.log("Total visitors sum is " +foreachfunctionsumnumbers(numberofvisitorsarray)) //print Total visitors sum is 1398
+
+/* Get Programming With JavaScript By John Larsen Chapter 09 Constructors:  Building Objects With Functions
+ */
+let buildplanetfunction = function(name, position, type) {
+    let eachplanet = {};
+    eachplanet.name = name;
+    eachplanet.position = position;
+    eachplanet.type = type;
+    eachplanet.showplanet = function () {
+        let printsentence = eachplanet.name+" "+eachplanet.position+" - "+eachplanet.type;
+        console.log(printsentence)
+    };
+    return eachplanet;
+};
+let planetjupiter = buildplanetfunction("Jupiter",5,"Gas Giant");
+console.log(planetjupiter.name) //print Jupiter
+console.log(planetjupiter.position) //print 5
+console.log(planetjupiter.type) //print Gas Giant
+planetjupiter.showplanet(); //print Jupiter 5 - Gas Giant
+let planetneptune = buildplanetfunction("Neptune",8,"Ice Giant");
+planetneptune.showplanet(); //print Neptune 8 - Ice Giant
+let planetsfunctionarray = [buildplanetfunction("Jupiter",5,"Gas Giant"), planetneptune, buildplanetfunction("Mercury",1,"Terrestrial")];
+planetsfunctionarray.forEach(function(eachplanetsfunctionarray){
+    eachplanetsfunctionarray.showplanet();
+    /*
+    Jupiter 5 - Gas Giant
+    Neptune 8 - Ice Giant
+    Mercury 1 - Terrestrial
+    */
+});
+console.log(planetsfunctionarray[0].name) //print Jupiter
+console.log(planetsfunctionarray[1].name) //print Neptune
+console.log(planetsfunctionarray[2].type) //print Terrestrial
+let Planetconstructor = function(name, position, type) {
+    this.name = name;
+    this.position = position;
+    this.type = type;
+    this.moonsemptyarray = [];
+    this.showplanet = function () {
+        let printsentence = this.name+" "+this.position+" - "+this.type;
+        console.log("using this keyword "+printsentence)
+        console.log("Moon(s) added: "+this.moonsemptyarray.join(", ")+".");
+    };
+    this.addmoonfunction = function(addmoon) {
+        this.moonsemptyarray.push(addmoon)
+    };
+};
+let defineconstructorfunctionjupiter = new Planetconstructor("Jupiter",5,"Gas Giant");
+defineconstructorfunctionjupiter.showplanet() //return using this keyword Jupiter 5 - Gas Giant\n Moon(s) added: .
+defineconstructorfunctionjupiter.addmoonfunction("Io");
+defineconstructorfunctionjupiter.addmoonfunction("Europa");
+defineconstructorfunctionjupiter.showplanet()
+/*
+using this keyword Jupiter 5 - Gas Giant
+Moon(s) added: Io, Europa.
+*/
+let defineconstructorfunctionneptune = new Planetconstructor("Neptune",8,"Ice Giant");
+defineconstructorfunctionneptune.addmoonfunction("Triton");
+defineconstructorfunctionneptune.showplanet();
+/*
+using this keyword Neptune 8 - Ice Giant
+Moon(s) added: Triton.
+*/
+let defineconstructorfunctionmercury = new Planetconstructor("Mercury",1,"Terrestrial");
+defineconstructorfunctionmercury.showplanet();
+/*
+using this keyword Mercury 1 - Terrestrial
+Moon(s) added: .
+*/
+console.log(defineconstructorfunctionmercury instanceof Planetconstructor); //print true.  Find instance of to check if a constructor function created an object.
+//console.log(defineconstructorfunctionpluto instanceof Planetconstructor); //print Uncaught ReferenceError: defineconstructorfunctionpluto is not defined at yy.js:71:13
+let Quizquestion = function(question, answer) {
+    this.question = question;
+    this.answer = answer;
+    this.optionsarray = [];
+    this.addmutliplechoicearray = function(achoice) {
+        this.optionsarray.push(achoice);
+    };
+    this.displayquestion = function() {
+        console.log(this.question);
+        this.optionsarray.forEach(function (achoice, i) {
+            console.log("option #"+(i+1)+" "+achoice);
+        });
+    };
+};
+let question1 = new Quizquestion("What is the capital of France?","Paris");
+question1.addmutliplechoicearray("Bordeaux");
+question1.addmutliplechoicearray("F");
+question1.addmutliplechoicearray("Paris");
+question1.addmutliplechoicearray("Brussels");
+question1.displayquestion();
+/*
+What is the capital of France?
+option #1 Bordeaux
+option #2 F
+option #3 Paris
+option #4 Brussels
+*/
+let question2 = new Quizquestion("Five multiple choices HP","Harry Potter");
+question2.addmutliplechoicearray("Harry Potter");
+question2.addmutliplechoicearray("P");
+question2.addmutliplechoicearray("Hit Points");
+question2.addmutliplechoicearray("Hat Pat");
+question2.addmutliplechoicearray("Hop Pop");
+question2.displayquestion();
+/*
+Five multiple choices HP
+option #1 Harry Potter
+option #2 P
+option #3 Hit Points
+option #4 Hat Pat
+option #5 Hop Pop
+*/
