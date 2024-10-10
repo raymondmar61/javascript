@@ -381,8 +381,7 @@ let foreachfunctionsumnumbers = function (numberslist, useoptionalindex) {
 };
 console.log("Total visitors sum is " +foreachfunctionsumnumbers(numberofvisitorsarray)) //print Total visitors sum is 1398
 
-/* Get Programming With JavaScript By John Larsen Chapter 09 Constructors:  Building Objects With Functions
- */
+/* Get Programming With JavaScript By John Larsen Chapter 09 Constructors:  Building Objects With Functions */
 let buildplanetfunction = function(name, position, type) {
     let eachplanet = {};
     eachplanet.name = name;
@@ -492,4 +491,181 @@ option #2 P
 option #3 Hit Points
 option #4 Hat Pat
 option #5 Hop Pop
+*/
+
+/* Get Programming With JavaScript By John Larsen Chapter 10 Bracket Notation:  Flexible Property Names */
+/* The property name or key is joined to a variable name with a period or dot.  Can get properties by including a property's key between square brackets. */
+getobjectkeyproperties = {"Ohio":"OH","New Hampshire":"NH","Rhode Island":"RI","Hawaii":"HI"};
+console.log(getobjectkeyproperties.Ohio) //print OH
+//console.log(getobjectkeyproperties.New Hampshire) //print Uncaught SyntaxError:  missing ) . . .
+console.log(getobjectkeyproperties["New Hampshire"]) //print NH
+let getpropertynames = Object.keys(getobjectkeyproperties);
+console.log(getpropertynames) //print ['Ohio', 'New Hampshire', 'Rhode Island', 'Hawaii']
+getpropertynames.forEach(function (printeachproperty) {
+    console.log(printeachproperty)
+});
+/*
+Ohio
+New Hampshire
+Rhode Island
+Hawaii
+*/
+let parameteraskeydot = function (statename) {
+    let states = {"Ohio":"OH","New Hampshire":"NH","Rhode Island":"RI","Hawaii":"HI"};
+    let stateabbreviationdot = states.statename;
+    return stateabbreviationdot;
+};
+console.log(parameteraskeydot("Ohio")) //print undefined
+console.log(parameteraskeydot("New Hampshire")) //print undefined
+let parameteraskeybracket = function (statename) {
+    let states = {"Ohio":"OH","New Hampshire":"NH","Rhode Island":"RI","Hawaii":"HI"};
+    let stateabbreviationbracket = states[statename];
+    return stateabbreviationbracket;
+};
+console.log(parameteraskeybracket("Ohio")) //print OH
+console.log(parameteraskeybracket("New Hampshire")) //print NH
+let namesagesobject = {};
+namesagesobject["Kandra Smith"] = 56;
+namesagesobject["Dax Aniaku"] = 21;
+console.log(namesagesobject) //print {Kandra Smith: 56, Dax Aniaku: 21}
+console.log(namesagesobject["Kandra Smith"]) //print 56
+console.log(namesagesobject["Dax Aniaku"]) //print 21
+//Function assign property names.  Assign an age to a name.
+let namesagesobjectfunction = {};
+let addagefunction = function (name, age) {
+    namesagesobjectfunction[name] = age;
+};
+//The name parameter in addagefunction is the key for the namesagesobjectfunction.
+addagefunction("Kandra Smith", 56);
+addagefunction("Dax Aniaku", 21);
+console.log(namesagesobjectfunction["Kandra Smith"]) //print 56
+console.log(namesagesobjectfunction["Dax Aniaku"]) //print 21
+let texttosplit = "KandraSmith,50,TheDungeon Of Doom";
+let splittextcsv = texttosplit.split(",");
+console.log(splittextcsv) //print ['KandraSmith', '50', 'TheDungeon Of Doom']
+let characterstosplit = "I love donuts";
+let splittextcharactes = characterstosplit.split("");
+console.log(splittextcharactes) //print  ['I', ' ', 'l', 'o', 'v', 'e', ' ', 'd', 'o', 'n', 'u', 't', 's']
+let splitmethodstring = "page=5&page=10&tag=pluto";
+let printsplitstring = splitmethodstring.split("&");
+console.log(printsplitstring) //print ['page=5', 'page=10', 'tag=pluto']
+let countwordstweet = ["Education is showing business the way by using technology to share information. How do we do so safely?","Enjoy a free muffin & coffee with Post Plus, our new loyalty club exclusive to subscribers!","We're LIVE on Periscope right now answering all your #pet questions - tweet us yours now!"];
+console.log(countwordstweet) //print ['Education is showing business the way by using tec…ogy to share information. How do we do so safely?', 'Enjoy a free muffin & coffee with Post Plus, our new loyalty club exclusive to subscribers!', "We're LIVE on Periscope right now answering all your #pet questions - tweet us yours now!"]
+let countwords = {};
+let extracttextarray = countwordstweet.join(" "); //Extract from an array, extract text, extract string
+console.log(extracttextarray) //print Education is showing business the way by using technology to share information. How do we do so safely? Enjoy a free muffin & coffee with Post Plus, our new loyalty club exclusive to subscribers! We're LIVE on Periscope right now answering all your #pet questions - tweet us yours now!
+let splittext = extracttextarray.split(" ")
+console.log(splittext) //print ['Education', 'is', 'showing', 'business', 'the', 'way', 'by', 'using', 'technology', 'to', 'share', 'information.', 'How', 'do', 'we', 'do', 'so', 'safely?', 'Enjoy', 'a', 'free', 'muffin', '&', 'coffee', 'with', 'Post', 'Plus,', 'our', 'new', 'loyalty', 'club', 'exclusive', 'to', 'subscribers!', "We're", 'LIVE', 'on', 'Periscope', 'right', 'now', 'answering', 'all', 'your', '#pet', 'questions', '-', 'tweet', 'us', 'yours', 'now!']
+//Set eachword count to zero
+splittext.forEach(function (eachword) {
+    countwords[eachword] = 0;
+});
+splittext.forEach(function (eachword) {
+    countwords[eachword]+=1;
+});
+console.log(countwords) //print {Education: 1, is: 1, showing: 1, business: 1, the: 1, …}
+
+/* Get Programming With JavaScript By John Larsen Chapter 11 Scope:  Hiding Information */
+let declareglobalvariable;
+declareglobalvariable = "assign declareglobalvariable Ben Nevis";
+console.log(declareglobalvariable) //print assign declareglobalvariable Ben Nevis
+let benfunction = function () {
+    console.log(declareglobalvariable)
+};
+benfunction(); //return assign declareglobalvariable Ben Nevis
+let localvariable = function () {
+    let mountainvariableinsidefunction = "Tower Of Power";
+};
+//console.log(mountainvariableinsidefunction) //print Uncaught ReferenceError: mountainvariableinsidefunction is not defined
+let globalvariablefunction = function () {
+    let mountainvariableinsidefunction = "You can see me because function declared as a global variable.  The collection of variables outside all functions is called the global scope.  Each function creates its own local scope with its own collection of variables.";
+};
+console.log(globalvariablefunction); //print ƒ () {let mountainvariableinsidefunction = "You can see me because function declared as a global variable.  The collection of variables outside all functions is called the global scope.  Each fun…
+let globalvariablefunction2 = function () {
+    let mountainvariableinsidefunction = "You can see me because function declared as a global variable.  The collection of variables outside all functions is called the global scope.  Each function creates its own local scope with its own collection of variables.";
+    console.log(mountainvariableinsidefunction);
+};
+globalvariablefunction2(); //return You can see me because function declared as a global variable.  The collection of variables outside all functions is called the global scope.  Each function creates its own local scope with its own collection of variables.
+globallocalvariables = function () {
+    console.log(declareglobalvariable)
+    let mountainvariableinsidefunction = "You can see me because function declared as a global variable.  The collection of variables outside all functions is called the global scope.  Each function creates its own local scope with its own collection of variables.";
+    console.log(mountainvariableinsidefunction);
+}
+globallocalvariables();
+/*
+assign declareglobalvariable Ben Nevis
+You can see me because function declared as a global variable.  The collection of variables outside all functions is called the global scope.  Each function creates its own local scope with its own collection of variables.
+*/
+//console.log(mountainvariableinsidefunction) //print Uncaught ReferenceError: mountainvariableinsidefunction is not defined
+//Declare counter as a local varaible using a function.  Prevent users from changing the initial counter variable value.  Must start at zero.  Also, reference a variable from another function.  Function inside another function.  Subfunction.
+let initializecounterlocalvariable = function () {
+    let counter = 0;
+        console.log("I'm inside initializecounterlocalvariable.  counter variable value: "+counter)
+    let counterupby1 = function () {
+        counter += 1;
+        console.log("I'm inside counterupby1.  counter variable value: "+counter)
+        counteranswer = counter; //counteranswer variable is reference for learning
+        return counteranswer;
+    };
+    return counterupby1;
+};
+let startcounterinitialize = initializecounterlocalvariable();
+console.log(startcounterinitialize())
+console.log(startcounterinitialize())
+console.log(startcounterinitialize())
+/*
+I'm inside initializecounterlocalvariable.  counter variable value: 0
+I'm inside counterupby1.  counter variable value: 1
+1
+I'm inside counterupby1.  counter variable value: 2
+2
+I'm inside counterupby1.  counter variable value: 3
+3
+*/
+let startcounterinitialize2 = initializecounterlocalvariable();
+console.log(startcounterinitialize2())
+console.log(startcounterinitialize())
+/*
+I'm inside initializecounterlocalvariable.  counter variable value: 0
+I'm inside counterupby1.  counter variable value: 1
+1
+I'm inside counterupby1.  counter variable value: 4
+4
+*/
+let constructorcounter = function () {
+    let counter = 0;
+        console.log("I'm inside constructorcounter.  counter variable value: "+counter)
+    this.count = function () {
+        counter += 1;
+        console.log("I'm inside this.count.  counter variable value: "+counter)
+        counteranswer = counter; //counteranswer variable is reference for learning
+        return counteranswer;
+    };    
+};
+let independentcounter1 = new constructorcounter();
+let independentcounter2 = new constructorcounter();
+console.log(independentcounter1.count())
+console.log(independentcounter1.count())
+console.log(independentcounter1.count())
+console.log(independentcounter1.count())
+console.log("independentcounter2 "+independentcounter2.count())
+console.log("independentcounter2 "+independentcounter2.count())
+console.log(independentcounter1.count())
+/*
+yy.js:71 I'm inside constructorcounter.  counter variable value: 0
+yy.js:71 I'm inside constructorcounter.  counter variable value: 0
+yy.js:74 I'm inside this.count.  counter variable value: 1
+yy.js:81 1
+yy.js:74 I'm inside this.count.  counter variable value: 2
+yy.js:82 2
+yy.js:74 I'm inside this.count.  counter variable value: 3
+yy.js:83 3
+yy.js:74 I'm inside this.count.  counter variable value: 4
+yy.js:84 4
+yy.js:74 I'm inside this.count.  counter variable value: 1
+yy.js:85 independentcounter2 1
+yy.js:74 I'm inside this.count.  counter variable value: 2
+yy.js:86 independentcounter2 2
+yy.js:74 I'm inside this.count.  counter variable value: 5
+yy.js:87 
 */
