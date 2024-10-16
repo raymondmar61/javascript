@@ -669,3 +669,90 @@ yy.js:86 independentcounter2 2
 yy.js:74 I'm inside this.count.  counter variable value: 5
 yy.js:87 
 */
+
+/* Get Programming With JavaScript By John Larsen Chapter 12 Conditions:  Choosing Code To Run */
+console.log("Strict equality operator ===", "Use triple quotes"==="Use triple quotes") //print Strict equality operator === true
+console.log("Not strictly equal operator !==", "Use triple quotes"!=="Use triple quotes") //print Not strictly equal operator !== false.  RM:  not equal to
+let secretanswer = 8;
+let userguess = function (numberguess) {
+    if (numberguess === secretanswer) {
+        console.log("Correct guess",secretanswer)
+    } else {
+        console.log("else statement.  Try again.")
+    }
+};
+userguess(3) //return else statement.  Try again.
+userguess(8) //return Correct guess 8
+let createlocalscope = function() {
+    let localvariableinlocalscope = 5;
+    return function (numberguessusecreatelocalscope) {
+        if (numberguessusecreatelocalscope === localvariableinlocalscope) {
+            console.log("Correct guess.  Return function numberguessusecreatelocalscope for user to guess number.")
+        } else {
+            console.log("Wrong guess.")
+        }
+    };
+};
+let callcreatelocalscopefunction = createlocalscope();
+callcreatelocalscopefunction(3) //return Wrong guess.
+callcreatelocalscopefunction(5) //return Correct guess.  Return function numberguessusecreatelocalscope for user to guess number.
+callcreatelocalscopefunction(8) //return Wrong guess.
+let createlocalscope2 = function () {
+    let localvariableinlocalscope2 = 7;
+    return function(ifelseif) {
+        if (ifelseif === localvariableinlocalscope2) {
+            return "Correct guess";
+        } else if (ifelseif > localvariableinlocalscope2) {
+            return "Guess too high"
+        } else {
+            return "Guess too low"
+        }
+    };
+};
+let callcreatelocalscopefunction2 = createlocalscope2();
+console.log(callcreatelocalscopefunction2(2)) //return Guess too low
+console.log(callcreatelocalscopefunction2(9)) //return Guess too high
+console.log(callcreatelocalscopefunction2(7)) //return Correct guess
+let quiztrivia = function () {
+    let inplay = true;
+    let questionsarrayindexnumber = 0;
+    let questionsarray;
+    let nextquestion;
+    let displayquestion;
+    let checkanswer;
+    let quizme;
+    let getuseranswer;
+    questionsarray = [{question:"What is the highest mountain in the world?", answer:"Everest"},{question:"What is the highest mountain in Scotland?", answer:"Ben Nevis"},{question:"Who wrote Harry Potter?", answer:"J.K. Rowling"}];
+    displayquestion = function () {
+        if (inplay) {
+            return questionsarray[questionsarrayindexnumber].question;            
+        } else {
+            return "Quiz is finished";
+        }
+    };
+    nextquestion = function () {
+        questionsarrayindexnumber+=1;
+        if (questionsarrayindexnumber >= questionsarray.length) {
+            inplay = false;
+            console.log("Quiz is finished")
+        }
+    };
+    checkanswer = function (useranswer) {
+        if (useranswer === questionsarray[questionsarrayindexnumber].answer) {
+            console.log("Correct answer")
+        } else {
+            console.log("Incorrect.  The correct answer is "+questionsarray[questionsarrayindexnumber].answer)
+        }
+    };
+    getuseranswer = function (useranswer) {
+        let message = "You finished the quiz";
+        if (inplay) {
+            checkanswer(useranswer);
+            nextquestion();
+        };
+    return {quizme: displayquestion, getuseranswer: getuseranswer};
+    };
+};
+let quizvariable = quiztrivia(); //RM:  I can't get the quiztrivia to work.
+// quizvariable(); //error message Uncaught TypeError: quizvariable is not a function
+// quizvariable(displayquestion()); //error message Uncaught ReferenceError: displayquestion is not defined
