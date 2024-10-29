@@ -1,6 +1,8 @@
 # javascript
 Tutorial self-teaching JavaScript from YouTube and online tutorials
 
+Update Oct 21, 2024:  Relearn and review reading JavaScript & jQuery by Jon Duckett
+
 Update Sep 4, 2024:  Relearn and review reading Get Programming With JavaScript By John Larsen
 
 Update Jul 23, 2024:  Relearn and review reading JavaScript The Definitive Guide By David Flanagan
