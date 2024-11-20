@@ -313,3 +313,123 @@ if (operation === "addition") {
     document.write("Error in the operation variable")
 };
 /* -2subtraction\n -3subtraction\n -4subtraction\n -5subtraction\n -6subtraction\n -7subtraction\n -8subtraction\n -9subtraction\n -10subtraction\n -11subtraction */
+
+/* JavaScript & jQuery by Jon Duckett Chapter 5 Document Object Model */
+let getpid = document.getElementById("getelementbyid");
+document.write(getpid) //print [object HTMLParagraphElement]
+document.write(getpid.textContent) //print Returns the element with the ID attribute
+let elementidone = document.getElementById("one");
+elementidone.className = "cool"; //Call className property to change the value of the class element from hot to cold for id="one"
+elementidone.className = "hot"; //Reset call className property to change the value of the class element from cold to hot for id="one"
+let elementsall = document.getElementsByClassName("hot");
+if (elementsall.length>=1) {
+    let firstItem = elementsall.item(0); //let firstItem=elementsall[0]; also works
+    let thirditem = elementsall[2]; //RM:  declare all variables first
+    firstItem.className = "newclassname";
+    thirditem.className = "changehottocool";
+};
+let elementsbyhtmltag = document.getElementsByTagName("li");
+if (elementsbyhtmltag.length > 0) {
+    let firstItem = elementsbyhtmltag[0];
+    firstItem.className = "fromhottocool";
+};
+let selectfirstelementmatch = document.querySelector("li.fromhottocool");
+selectfirstelementmatch.className="cool";
+let selectfirstelementsmatch2 = document.querySelector("li.changehottocool");
+selectfirstelementsmatch2.className= "hot";
+let selectallelementsmatch = document.querySelectorAll("li.hot");
+if (selectallelementsmatch.length > 0) {
+    for (let i=0; i<selectallelementsmatch.length; i++) {
+        selectallelementsmatch[i].className = "needforloopchangeallelements";
+    };
+};
+/* Reset exercise class="hot".  RM:  Partial reset.  Hard to explain. */
+let resetclassvalues = document.getElementsByTagName("li");
+for (let i=0; i<resetclassvalues.length-1;i++) {
+    resetclassvalues[i].className="hot";
+};
+/* Cleared the JavaScript file for the next exercise tutorial */
+/* <li id="one" class="hot"><em>fresh</em> figs</li> */
+document.write(document.getElementById("one").nodeValue) //print null
+document.write(document.getElementById("one").firstChild.nodeValue) //print null.  RM:  the firstChild of <li> is the <em> element
+document.write(document.getElementById("one").firstChild.nextSibling.nodeValue) //print RM:  the text node is the nextSibling of the <em> element
+/* <li id="two" class="hot">pine nuts</li> */
+document.write(document.getElementById("two").firstChild.nodeValue) //print pine nuts
+/* Update text, change text.  RM:  there must be a better way.  Take a look further down. */
+let secondbulletpoint = document.getElementById("two");
+let changetext = secondbulletpoint.firstChild.nodeValue;
+document.write(changetext) //print pine nuts
+changetext = changetext.replace("pine nuts","peanuts")
+secondbulletpoint.firstChild.nodeValue = changetext;
+document.write(document.getElementById("two").firstChild.nodeValue) //print peanuts
+document.write(document.getElementById("two").textContent) //print peanuts
+let firstbulletpoint = document.getElementById("one");
+let showTextContent = firstbulletpoint.textContent;
+let showInnerText = firstbulletpoint.innerText;
+document.write(showTextContent) //print fresh figs
+document.write(showInnerText) //print fresh figs.  Book says figs is supposed to be printed because fresh is hidden by the CSS.
+firstbulletpoint.textContent = "replace fresh figs with sourdough bread"
+document.write(firstbulletpoint.textContent) //print replace fresh figs with sourdough bread
+/* Cleared the JavaScript file for the next exercise tutorial */
+let firstitem = document.getElementById("one");
+document.write(firstitem.textContent) //print replace fresh figs with sourdough bread
+let firstitemcontentwithhtml = firstitem.innerHTML;
+document.write(firstitemcontentwithhtml) //print <emfresh<em> figs with sourdough bread
+let newbulletpoint = document.createElement("li");
+let newbulletpointtext = document.createTextNode("quinoa");
+newbulletpoint.appendChild(newbulletpointtext); //Attach a new text node to the new element <li>
+let firstbulletlistposition = document.getElementsByTagName("ul")[0]; //Find the <ul> to insert the new bullet point
+firstbulletlistposition.appendChild(newbulletpoint); //Insert the new element <li> as a child to parent <ul>
+/*
+Buy groceries
+    fresh figs
+    pine nuts
+    honey
+    balsamic vinegar
+    quinoa
+*/
+let removebulletpoint = document.getElementsByTagName("li")[3]; //Delete bullet point element <li> the fourth <li>
+let containerbulletpoint = removebulletpoint.parentNode; //It's containing element which is the parent element <ul>.
+containerbulletpoint.removeChild(removebulletpoint); //Delete element.  Delete the child of <ul> which is <li>
+/* Cleared the JavaScript file for the next exercise tutorial */
+let firstbulletpoint = document.getElementById("one");
+if (firstbulletpoint.hasAttribute("class")) {
+    document.write("Check if the element id one has a class attribute.")
+    let getattribute = firstbulletpoint.getAttribute("class");
+    document.write(getattribute) //print hot
+    firstbulletpoint.className = "Change class name or class attribute from hot to the sentence"
+}
+firstbulletpoint.removeAttribute("class"); //Delete class.  Delete attribute or remove attribute
+let fourthbulletpoint = document.getElementsByTagName("li").item(3)
+fourthbulletpoint.setAttribute("class","insert a class attribute class=cool")
+/* <li id="four" class="insert a class attribute class=cool">balsamic vinegar</li> */
+/* Cleared the JavaScript file for the next exercise tutorial */
+let getFirstULElement = document.getElementsByTagName("ul")[0];
+let insertLIElement = document.createElement("li");
+let insertLIElementText = document.createTextNode("cream");
+insertLIElement.appendChild(insertLIElementText); //Insert text node to <ul> element
+getFirstULElement.appendChild(insertLIElement);  //Insert <li> element at the end of the <ul> list
+let insertLIElementFirst = document.createElement("li");
+let insertLIElementFirstText = document.createTextNode("kale");
+insertLIElementFirst.appendChild(insertLIElementFirstText); //Insert text node to <ul> element
+getFirstULElement.insertBefore(insertLIElementFirst, getFirstULElement.firstChild);  //Insert <li> element at the beginning of the <ul> list
+let getAllLIElements = document.querySelectorAll("li");
+/* Change from class="hot" to class="cool".  Edit class, update class */
+for (i=0; i<getAllLIElements.length; i++) {
+    getAllLIElements[i].className = "cool";
+};
+let getHeading2 = document.querySelector("h2");
+let getHeading2Text = getHeading2.firstChild.nodeValue;
+document.write(getHeading2Text) //print Buy groceries
+let countBulletPoints = getAllLIElements.length;
+let updateHeading2Text = getHeading2Text +"<span>"+ countBulletPoints+"</span>"
+getHeading2.textContent = updateHeading2Text;
+/*
+Buy groceries<span>6</span>
+kale
+fresh figs
+pine nuts
+honey
+balsamic vinegar
+cream
+*/
