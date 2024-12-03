@@ -14,10 +14,36 @@
         msgmessage = document.getElementById("message");
         msgmessage.outerHTML = "<h1>Hello, world</h1>";
     }
+    function generateEmail(form) {
+        document.getElementById("pidemail").innerHTML = form.elements["firstid"].value + "." + form.elements["lastid"].value +"@park.edu";
+        form.reset();
+        form.elements["firstid"].focus();
+    }
 </script>
 </head>
 <body>
 <h3 id="message">To see the traditional first-program greeting, click below.  Click the button.  value="Click Me!" displays the button label.  onclick="displayHello();" runs the displayHello() JavaScript function.  The &lt;h3&gt; is replaced with the JavaScript msgmessage.outerHTML = "&lt;h1&gt;Hello, world&lt;/h1&gt;";</h3>    
-<input type="button" value="Click Me!" name="" onclick="displayHello();">
+<p><input type="button" value="Click Me!" name="" onclick="displayHello();"></p>
+
+<form>
+    First Name: <input type="text" id="firstid" size="15" autofocus onchange="this.form.elements['lastid'].disabled=false">Must input first name before input last name by setting Last Name to disabled="true"<br>
+    Last Name: <input type="text" id="lastid" size="15" disabled="true"><br>    
+    <input type="button" value="Generate Email value display on button" onclick="generateEmail(this.form);">
+    <p id="pidemail"></p>
+    <p>The button onclick event handler calls the generateEmail function which combines the first name and last name entered.  The this keyword in onclick="generateEmail(this.form) refers to the object which contains the JavaScript in which this appears.  The button element's object has a form property or .form(?) property which holds the form which surrounds the button.  We pass the form object to the generateEmail function by calling generateEmail(this.form).</p>
+    <p>The outerHTML property returns the text and its tags.  The innerHTML property returns the text enclosed in its tags.</p>
+    <p>Common event handlers attributes:  onclick users clicks on an element, onfocus elements gain focus, onchange form control value changes, onmouseover mouse moves over an element, onmouseout mouse moves away from element, onload element finishes loading.</p>
+    <input type="reset" value="Reset">
+    <p>Control elements.  More popular controls and the elements used.  Some controls use the select and textarea elements.  input elements:  button, text control, number for which users enter a number, radio button, checkbox, password, date for which users enter a month-day-year value, and color for which users select a color from a color picker tool.  select elements:  pull-down menu and list box.  textarea elements:  textarea control.  Author talks about radio button and checkbox controls in Chapter 10.</p>
+    <input type="text" id="textboxidentifier" placeholder="userentrydescription" size="15" maxlength="100">placeholder="text display on the text box" size="box-width" maxlength="maximum typed characters"
+    <p>Text control attributes are type, id, placeholder, size, maxlength, value, autofocus, disabled, and readonly.  Use type="text" for text control or text box or input box.  autofocus specifies the browser engine position the cursor in the text control after the page loads.  disabled specifies the text control cannon receive the focus disabled=true.  The user can't copy or edit the text control's value.  readonly specifies the user highlight the control's value and copy only.</p>
+    <input type="text" id="ssn" placeholder="#########" size="9" maxlength="9">Social Security number example.  The nine # in placeholder implicitly tells the user to enter nine digits with no hyphens.
+</form>
+<p>Image rollover example with onmouseover and onmouseout.  Use two images from D:\htmlcsswebdesign folder ford_290.jpg and masseyferg_290.jpg.  The forward slashes in the onmouseover and onmouseout are correct.</p>
+<img src="D:\htmlcsswebdesign\ford_290.jpg" width="290" height="218" alt="Ford tractor" onmouseover="this.src='D:/htmlcsswebdesign/masseyferg_290.jpg'" onmouseout="this.src='D:/htmlcsswebdesign/ford_290.jpg'">
+<p>Use noscript to accommodate disabled JavaScript.  JavaScript deactivated.</p>
+<noscript>
+    <p>The webpage uses JavaScript.  For proper results, you must use a web browser with JavaScript enabled.</p>
+</noscript>
 </body>
 </html>
