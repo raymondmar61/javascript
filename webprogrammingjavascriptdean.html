@@ -45,5 +45,82 @@
 <noscript>
     <p>The webpage uses JavaScript.  For proper results, you must use a web browser with JavaScript enabled.</p>
 </noscript>
+<h3>window Object</h3>
+<script type="text/javascript">
+document.write(window.location.href) //print file:///D:/JavaScript/webprogrammingjavascriptdean.html
+document.write(window.location.protocol) //print file:.  Protocol is not http:// because file is in a local drive.
+document.write(window.location.hostname) //print .  Returns the name of the web server computer.
+document.write(window.location.pathname) //print /D:/JavaScript/webprogrammingjavascriptdean.html.  The directories and subdirectories in between the home page directory (or the web server's root directory) and the web page's filename.
+document.write(window.navigator) //print [object Navigator].   Browser name.
+document.write(window.navigator.userAgent) //print Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+document.write(window.screen) //print [object Screen].  RM:  monitor screen width and height in pixels.
+document.write(window.screen.availWidth) //print 3840
+document.write(window.screen.availHeight) //print 2120
+</script>
+<p>All the window object's members are global, the window object is special, and it's given a special name—the global object. The JavaScript engine generates the window object automatically whenever the user launches a new browser instance. If you attempt to access a property or call a method and you don't prepend such attempts with an object dot, then the JavaScript engine automatically inserts the global object (window) and a dot in front of the member.</p>
+<script type="text/javascript">
+document.write(location.href) //print file:///D:/JavaScript/webprogrammingjavascriptdean.html
+document.write(location.protocol) //print file:.  Protocol is not http:// because file is in a local drive.
+document.write(location.hostname) //print .  Returns the name of the web server computer.
+document.write(location.pathname) //print /D:/JavaScript/webprogrammingjavascriptdean.html.  The directories and subdirectories in between the home page directory (or the web server's root directory) and the web page's filename.
+document.write(navigator) //print [object Navigator].   Browser name.
+document.write(navigator.userAgent) //print Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+document.write(screen) //print [object Screen].  RM:  monitor screen width and height in pixels.
+document.write(screen.availWidth) //print 3840
+document.write(screen.availHeight) //print 2120
+document.write("<p>Typed in script tags.  Use noscript to accommodate disabled JavaScript.  JavaScript deactivated.</p>")
+</script>
+<h3>alert, confirm, prompt</h3>
+<script type="text/javascript">
+//alert("alert Method.  Alert box message is typed here.");
+let replyanswer;
+//replyanswer = confirm("confirm Method.  Confirm box message is typed here. Press OK, then confirm method returns true.  Press Cancel or click close-out X button, the confirm method returns false.")
+document.write(replyanswer) //print false.  Press Cancel for the confirm box message.
+//prompt("prompt Method.  Generates a dialog box with a question written here.  User clicks Cancel or the close-out button X, prompt returns null.  User clicks OK, prompt returns the value in the text box.","Initial value writen here.  Can be changed by user.");
+</script>
+<h3>if, else if, else</h3>
+<script type="text/javascript">
+ifnumber = 15;
+if (ifnumber >= 21) {
+    document.write("Big number")
+    window.location.assign("file:///D:/JavaScript/basicsduckett.html");
+} else if (ifnumber >= 18) {
+    document.write("Medium number")
+} else if (ifnumber >= 14) {
+    document.write("Small number")
+} else {
+    document.write("Tiny number")
+}
+</script>
+<h3>Strings</h3>
+<script type="text/javascript">
+let concatenatestring = "the end of the sentence";
+document.write("<p>The beginning of the string "+concatenatestring+" the absolute end of the string.</p>") //print The beginning of the string the end of the sentence the absolute end of the string.
+document.write("<p>Escape sequence characters and string continuation with \\ valid.  That's pretty fast. \"Stay Hungry, Stay Foolish,\" said Steve Jobs.</p>  The \\n for newline character is valid.\n New line doesn't appear using \\n because valid for dialog box messages.  Use <br> &lt;br&gt; for new line.")
+/*
+Escape sequence characters and string continuation with \ valid. That's pretty fast. "Stay Hungry, Stay Foolish," said Steve Jobs.
+
+The \n for newline character is valid. New line doesn't appear using \n because valid for dialog box messages. Use
+<br> for new line.
+*/
+let exclamation = "Holy Cow!";
+document.write("<br>")
+document.write(exclamation.toUpperCase()) //print HOLY COW!
+document.write(exclamation.toLowerCase()) //print holy cow!
+document.write(exclamation.length) //print 9
+document.write(exclamation.charAt(1)) //print o.  Return the string at index position 1.
+document.write(exclamation.indexOf("y C")) //print 3.  Index count starts at zero.  Number is where it starts the location.
+document.write(exclamation.indexOf("o",2)) //print 6.  Index count starts at zero.  Start searching at the second index position.  Number is where it starts the location.
+document.write(exclamation.lastIndexOf("C")) //print 5.  Index count starts at right side.  Number is where it starts the location.
+document.write(exclamation.replace("o","2o")) //print H2oly Cow!.  Replaces the first occurrence of the found string with the new string.
+document.write(exclamation.substring(5,6)) //print C.  Return the position from the beginning index position to just before the specified ending index position.
+document.write(exclamation.trim()) //print Holy Cow! with all white space removed from the start and from the end.  RM: there is no trim to be performed.
+</script>
+<h3>Arithemetic Operators</h3>
+<script type="text/javascript">
+</script>
+<noscript>
+    <p>The webpage uses JavaScript.  For proper results, you must use a web browser with JavaScript enabled.</p>
+</noscript>
 </body>
 </html>
