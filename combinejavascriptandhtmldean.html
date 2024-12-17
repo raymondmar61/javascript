@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programming with HTML5, CSS, and JavaScript by John Dean Chapter 09 Additional JavaScript Basics:  Window Object, If Statement, Strings, Numbers, And Input Validation
+    </title>
+    <style type="text/css">
+        body {background-color: gray}
+    </style>
+    <script type="text/javascript">
+        function activatefunction(form) {
+            const constantnumber = 200;
+            let quantityidnumber;
+            let diameteridnumber;
+            let answernumber;
+            quantityidnumber = parseInt(form.elements["quantityid"].value);
+            diameteridnumber = parseFloat(form.elements["diameterid"].value);
+            answernumber = constantnumber * quantityidnumber * diameteridnumber;
+            document.getElementById("answerid").innerHTML = "Multiply Number of water Balloons by Diameter of each balloon numbers only for tutorial purposes.  Display answer at output id=answerid. "+answernumber;
+        }
+    </script>
+</head>
+<body>
+    <h1>Water Balloon Fun</h1>
+    <form class="table" id="formid">
+        <div class="row">
+            <label for="quantityid">form label Number of water balloons:</label>
+            <input type="text" name="" id="quantityid" size="3" maxlength="3">
+        </div>
+        <div class="row">
+            <label for="diameterid">form label Diameter of each balloon in inches decimal number:</label>
+            <input type="text" name="" id="diameterid" size="4" maxlength="4">
+        </div>
+    </form>
+    <br>
+        <div class="bottom">
+            <input type="button" name="" form="formid" value="Label button; connect button with form=formid" onclick="activatefunction(this.form);">
+            <p>Display the answer using output id="answerid" below:
+            <p>
+            <output id="answerid" form="formid"></output>
+        </div>
+</body>
+</html>
