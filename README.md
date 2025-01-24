@@ -1,6 +1,8 @@
 # javascript
 Tutorial self-teaching JavaScript from YouTube and online tutorials
 
+Update Jan 24, 2025:  Visual Quickstart Guide JavaScript by Tom Negrino and Dori Smith
+
 Update Nov 25, 2024:  Relearn and review reading Web Programming with HTML5, CSS, and JavaScript by John Dean.  Focus on JavaScript.
 
 Update Oct 21, 2024:  Relearn and review reading JavaScript & jQuery by Jon Duckett
