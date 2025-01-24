@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Quick Start JavaScript For The World Wide Web Eighth Edition</title>
+    <script src = "externalscriptchapter02.js"></script>
+    <style type="text/css">
+        body {background-color: gray}
+    </style>
+</head>
+<body>
+    <h1>Chapter 2 Start Me Up!</h1>
+    <p>JavaScript scripts can be written in the &lt;head&gt; as a header script or the &lt;body&gt; as a body script.  Use semicolons to end the line which tells the browser JS interpreter the line ended.  Multiple script tags on a page are acceptable.</p>
+    <script type="text/javascript">
+        document.write("Hello, world!  The JS script is a body script.");
+    </script>
+    <p id="ptagid"></p>
+    <p>Type document.getElementById("ptagid").innerHTML in the external javascript file externalscriptchapter02.js to reference &lt;p&gt; tag &lt;p id="ptagid"&gt;.</p>
+    <script type="text/javascript">
+        var promptanswer = prompt("prompt() to receive two inputs from user or two parameters separated by a comma which are the user typed and user pressed OK or Cancel.  Yes OK or No Cancel?  User typed is null if the user typed nothing in the prompt.");
+        document.write(promptanswer)
+        if (promptanswer) {
+            alert("Alert box.  OK. "+promptanswer+" confirm() is the confirmation pop up window OK or Cancel.");
+        } else {
+            alert("Alert box.  Cancel. "+promptanswer+" confirm() is the confirmation pop up window OK or Cancel.");
+        }
+    </script>
+    <a href="hello.html" id="redirect">Click link.  Practice redirect users.  a href="hello.html" in case user doesn't have JS.</a>
+    <h2>Famous Presidential Quotes</h2>
+    <form action="#">
+        <input type ="button" id="Lincoln" value="display Lincoln on button">
+        <input type ="button" id="Kennedy" value="display Kennedy on button">
+        <input type ="button" id="Nixon" value="display Nixon on button">
+    </form>
+    <p>It seems JavaScript can't load multiple window.onloads.  The &lt;p id="ptagid"&gt; and Famous Presidential Quotes don't work.  Try to remember to keep in mind.</p>
+    <noscript>This page requires JavaScript.  Sentence is printed if JavaScript is disabled or browser is too old.</noscript>
+</body>
+</html>
