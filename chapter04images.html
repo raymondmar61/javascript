@@ -1,0 +1,26 @@
+<!-- Visual Quick Start Guide JavaScript Eighth Edition Tom Negrino and Dori Smith Chapter 4 Working With Images -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 Working With Images</title>
+    <script src="script04images.js"></script>
+    <style>
+       body {background-color: gray} 
+    </style>
+</head>
+<body>
+    <p>arrow_off onmouseout <img src="arrow_off.gif"></p>
+    <p>arrow_on onmouseover <img src="arrow_on.gif"></p>
+    <a href="chapter04images.html" onmouseover="document.images['changearrowcolor'].src='arrow_on.gif'" onmouseout="document.images['changearrowcolor'].src='arrow_off.gif'"><img src="arrow_off.gif" id="changearrowcolor" alt="blue arrow no mouseover red arrow yes mouseover"></a>
+    <h3>Build Wraparound Slideshow</h3>
+    <img src="robot1.jpg" id="elementIDPicture" width="200" height="400" alt="Robot Pictures For Slideshow">
+    <p><a href="placeholderlinkprevious.html" id="prevLink">&lt;&lt;Previous</a>.<a href="placeholderlinknext.html" id="nextLink">Next&gt;&gt;</a>.</p>
+    <h3>Display Random Images</h3>
+    <img src="noimagejustaplaceholder.jpg" width="305" height="312" id="randomPicture" alt="Random Animal Image">
+    <p>RM:  I don't understand why the Display Random Images doesn't work.  It works if I comment out the Cycle Images Changes Every 3 Seconds.  Maybe I can't use the same images two times in the same JavaScript file?</p>
+    <h3>Cycle Images Changes Every 3 Seconds</h3>
+    <img src="placeholder.jpg" width="305" height="312" id="cyclePicture" alt="Animal Image Rotates Every Three seconds">
+</body>
+</html>
